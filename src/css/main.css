@@ -15,46 +15,28 @@
     margin: 10px 0
 }
 
-.titleBold,
 .titulo-bold {
     font-weight: 900;
     color: #6D28D9;
 }
 
-.btnNuevaCita,
 .btn-nueva-cita {
     display: block;
     background-color: #6D28D9;
-    padding: 15px 35px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 15px;
+    margin: 30px auto;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    max-width: 500px;
-    color: #FFF;
-    font-size: 18px;
-    font-weight: 900;
-    font-family: inherit;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.2s ease;
 }
 
-.btnNuevaCita:hover,
 .btn-nueva-cita:hover {
-    background-color: #5B21B6;
+    background-color: #5b21b6;
 }
 
-.btnNuevaCita:active,
-.btn-nueva-cita:active {
-    background-color: #4C1D95;
-    transform: scale(0.98);
-}
-
-.btnTextoNuevaCita,
 .btn-texto-nueva-cita {
     text-align: center;
     color: #FFF;
