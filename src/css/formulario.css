@@ -78,3 +78,20 @@
 .formulario-input:focus {
     outline: 2px solid #F59E0B;
 }
+
+.formulario-btn-submit {
+    display: block;
+    background-color: #F59E0B;
+    padding: 15px;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.2s;
+}
+
+.formulario-btn-submit:hover {
+    background-color: #D98806;
+}
