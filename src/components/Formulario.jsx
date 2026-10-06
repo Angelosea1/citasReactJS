@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import '../css/formulario.css';
 
-const Formulario = ({ modalVisible, setModalVisible }) => {
+const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes }) => {
     const [paciente, setPaciente] = useState('');
 
     //Create 5 new states
@@ -23,6 +23,37 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
     const [fechaAlta, setFechaAlta] = useState('');
     const [sintomas, setSintomas] = useState('');
 
+    // Variable que guarda el valor del state, funcion que modifica el state
+
+
+    const handleCita = (e) => {
+        e.preventDefault();
+        if ([paciente.trim(), nombrePropietario.trim(), correo.trim(), telefono.trim(), fechaAlta, sintomas.trim()].includes('')) {
+            window.alert('Error: Todos los campos son obligatorios');
+            return;
+        }
+
+        // Create an object with all values in the form
+        const nuevoPaciente = {
+            paciente,
+            nombrePropietario,
+            telefono,
+            correo,
+            fechaAlta,
+            sintomas
+        };
+
+        nuevoPaciente.id = Date.now();
+        console.log(nuevoPaciente);
+
+        // Guarda todos los datos en el state 'pacientes'
+        setPacientes([...pacientes, nuevoPaciente]);
+        // Usa el operador spread (...) para copiar los pacientes previos sin mutar el arreglo original y agrega el nuevoPaciente al final
+
+        // Cerrar el modal una vez guardada la cita
+        setModalVisible(false);
+    }
+
     return (
         <div className="formulario-contenido">
             <h2 className="formulario-titulo">Nueva
@@ -35,7 +66,7 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
                 <span className="formulario-btn-texto-cancelar">Cancelar</span>
             </button>
 
-            <form onSubmit={() => console.log("submit")}>
+            <form onSubmit={handleCita}>
                 <div className="formulario-campo">
                     <label htmlFor="paciente" className="formulario-label">Nombre Paciente</label>
                     <input id="paciente" type="text" className="formulario-input" placeholder="Perrito Poppy" value={paciente} onChange={(e) => { setPaciente(e.target.value) }} />
