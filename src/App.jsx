@@ -8,6 +8,7 @@ function App() {
   // modalVisible - false al dar click sea true
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
+  const [pacienteEditar, setPacienteEditar] = useState(null);
   // Para pasar estados de un componente padre a un hijo se usa props
   return (
     <main className="container">
@@ -21,7 +22,11 @@ function App() {
         <span className='btn-texto-nueva-cita'>Nueva Cita</span>
       </button>
 
-      <Paciente />
+      {pacientes.map((paciente) => (
+        <Paciente setModalVisible={setModalVisible} pacientes={pacientes} paciente={paciente} key={paciente.id} />
+      ))}
+
+      
 
       {modalVisible && (
         <div className='modal-overlay' role='dialog' aria-modal="true">
