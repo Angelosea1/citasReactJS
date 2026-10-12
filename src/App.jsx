@@ -10,6 +10,16 @@ function App() {
   const [pacientes, setPacientes] = useState([]);
   const [pacienteEditar, setPacienteEditar] = useState(null);
   // Para pasar estados de un componente padre a un hijo se usa props
+  const eliminarPaciente = (id) => {
+    const confirmar = window.confirm('¿Estas seguro de eliminar esta cita?');
+    console.log(confirmar);
+    if (confirmar) {
+      const pacienteActualizados = pacientes.filter(paciente => paciente.id !== id);
+      // Filtra el arreglo creando uno nuevo que excluye al paciente con el id recibido (elimina el paciente)
+      setPacientes(pacienteActualizados);
+    }
+  }
+  
   return (
     <main className="container">
       <h1 className='titulo'>
@@ -23,7 +33,13 @@ function App() {
       </button>
 
       {pacientes.map((paciente) => (
-        <Paciente setModalVisible={setModalVisible} pacientes={pacientes} paciente={paciente} key={paciente.id} />
+        <Paciente 
+          key={paciente.id} 
+          paciente={paciente} 
+          pacientes={pacientes} 
+          setModalVisible={setModalVisible} 
+          eliminarPaciente={eliminarPaciente} 
+        />
       ))}
 
       
@@ -36,6 +52,8 @@ function App() {
               setModalVisible={setModalVisible}
               pacientes={pacientes}
               setPacientes={setPacientes}
+              // Estas son props que se pasan al componente Formulario
+              
             />
           </div>
         </div>

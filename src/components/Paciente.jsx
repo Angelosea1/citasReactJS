@@ -1,7 +1,7 @@
 
 import '../css/paciente.css';
 
-const Paciente = ({ setModalVisible, pacientes, paciente }) => {
+const Paciente = ({ setModalVisible, pacientes, paciente, eliminarPaciente }) => {
     // Los parametros son pequenos lugares que se van acomodando dependiendo del valor de la variable 
     // Los parametros son pasados por props desde el componente padre (App.jsx)
 
@@ -13,6 +13,11 @@ const Paciente = ({ setModalVisible, pacientes, paciente }) => {
         console.log(pacientes);
         // Los parametros son etiquetas que esperan recibir un estado para poder mostrar el valor de la variable
     };
+    const handleEliminar = () => {
+        // Es un manejador de eventos (event handler) que se ejecuta al interactuar con el botón.
+        // Sirve para encapsular la lógica previa (como pedir confirmación) antes de llamar a la función eliminarPaciente.
+        eliminarPaciente(paciente.id);
+    }
 
 
     return (
@@ -29,6 +34,7 @@ const Paciente = ({ setModalVisible, pacientes, paciente }) => {
                 >Editar</button>
                 <button
                     className="paciente-btn paciente-btn-eliminar"
+                    onClick={() => handleEliminar()}
                 >Eliminar</button>
             </div>
         </article>
